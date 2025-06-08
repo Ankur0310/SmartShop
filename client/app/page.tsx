@@ -1,19 +1,14 @@
+// client/app/page.tsx
 "use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-import { useEffect, useState } from "react";
-
-export default function Home() {
-  const [message, setMessage] = useState("");
-
-  console.log("ENV Base:", process.env.NEXT_PUBLIC_API_BASE);
-
+export default function HomePage() {
+  const router = useRouter();
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/ping`)
-      .then(res => res.json())
-      .then(data => setMessage(data.message));
-      console.log("API response received:", message);
-  }, []);
+    router.push("/start");
+  }, [router]);
 
-  return <div>API says: {message}</div>;
+  return null;
 }
